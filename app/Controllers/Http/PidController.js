@@ -3,13 +3,18 @@ const Pid = use('App/Models/Pid')
 
 
 class PidController {
+
+
   async index({ request, response, params: { id } }) {
   try {
     if (request.input('current')) {
+      console.log(request.get(id))
       return response.json({
         message: "Here is the current User",
-        id
-      }, request.authUser)
+        data: {
+          attributes: id
+        }
+      })
     }
 
     const pids = await Pid.with('AE15m').fetch()
@@ -75,10 +80,10 @@ class PidController {
 
   async lsmSort({ request, response, params: { id } }) {
     try {
-      const lsm = await Pid.findAll().
+      const lsm = await Pid.findAll().sortBy('')
 
 
-// Sql query builder
+        // Sql query builder
 
 
     } catch (e) {
