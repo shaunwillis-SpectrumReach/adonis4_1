@@ -5,9 +5,9 @@ const Model = use('Model')
 class Token extends Model {
 
 
-  pid() {
-    return this.belongsTo('App/Model/Pid');
-  }
+  // pid() {
+  //   return this.belongsTo('App/Models/Pid')
+  // }
 
 
 }

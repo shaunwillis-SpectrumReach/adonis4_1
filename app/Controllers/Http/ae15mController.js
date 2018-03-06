@@ -1,6 +1,6 @@
 'use strict'
 
-class AllaeController {
+class ae15mController {
   async index () {
   }
 
@@ -23,4 +23,4 @@ class AllaeController {
   }
 }
 
-module.exports = AllaeController
+module.exports = ae15mController

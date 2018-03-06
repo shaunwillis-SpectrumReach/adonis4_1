@@ -17,7 +17,7 @@ class PidController {
       })
     }
 
-    const pids = await Pid.with('AE15m').fetch()
+    const pids = await Pid.find(id)
     response.status(200).json({
       message: 'Here are all your current Users',
       data: {
@@ -37,11 +37,12 @@ class PidController {
 
     try {
       let { data : { attributes } } = request.post()
+      // console.log( attributes )
 
       const { pid, psid, firstname, lastname, email, password, managername, division, region, is_admin, is_approved, jobtitle, profile_pic_url, profile_pic_extension, rank } =  attributes
       // console.log( { pid, psid, firstname, lastname, email, password, managername, division, region, is_admin, is_approved, jobtitle, profile_pic_url, profile_pic_extension, rank })
+      // console.log( Pid.create({ pid, psid, firstname, lastname, email, password, managername, division, region, is_admin, is_approved, jobtitle, profile_pic_url, profile_pic_extension, rank }) )
       const pids = await Pid.create({ pid, psid, firstname, lastname, email, password, managername, division, region, is_admin, is_approved, jobtitle, profile_pic_url, profile_pic_extension, rank })
-
       response.status(201).json({
         message: 'Your new user account is now created!',
           data: {
@@ -51,7 +52,7 @@ class PidController {
 
     } catch (e) {
       response.status(500).json({
-        message: 'Warning! Bobby must have touch something.',
+        message: 'Warning! Your account was not created.',
 
       })
     } finally {
